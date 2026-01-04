@@ -244,25 +244,40 @@ const AdminDashboard = () => {
           </div>
         </div>
 
-        {/* Tabs Navigation */}
-        <div className="tabs tabs-boxed bg-gray-100 p-1 rounded-lg mb-8 border border-gray-200">
+        {/* Tabs Navigation - Improved Design */}
+        <div className="flex border-b border-gray-200 mb-8">
           <button 
-            className={`tab tab-lg ${activeTab === 'orders' ? 'tab-active bg-white text-gray-800 shadow' : 'text-gray-600 hover:bg-gray-200 hover:text-gray-800'}`}
+            className={`px-6 py-3 font-medium border-b-2 -mb-px transition-all duration-200 flex items-center gap-2 ${activeTab === 'orders' 
+              ? 'text-blue-600 border-blue-600 bg-blue-50' 
+              : 'text-gray-600 border-transparent hover:text-blue-500 hover:border-blue-300 hover:bg-blue-50/50'}`}
             onClick={() => setActiveTab('orders')}
           >
-            Orders
+            <span className="text-lg">📦</span>
+            <span>Orders</span>
+            <span className="text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded">
+              {orders.length}
+            </span>
           </button>
           <button 
-            className={`tab tab-lg ${activeTab === 'products' ? 'tab-active bg-white text-gray-800 shadow' : 'text-gray-600 hover:bg-gray-200 hover:text-gray-800'}`}
+            className={`px-6 py-3 font-medium border-b-2 -mb-px transition-all duration-200 flex items-center gap-2 ${activeTab === 'products' 
+              ? 'text-blue-600 border-blue-600 bg-blue-50' 
+              : 'text-gray-600 border-transparent hover:text-blue-500 hover:border-blue-300 hover:bg-blue-50/50'}`}
             onClick={() => setActiveTab('products')}
           >
-            Products
+            <span className="text-lg">🛍️</span>
+            <span>Products</span>
+            <span className="text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded">
+              {products.length}
+            </span>
           </button>
           <button 
-            className={`tab tab-lg ${activeTab === 'addProduct' ? 'tab-active bg-white text-gray-800 shadow' : 'text-gray-600 hover:bg-gray-200 hover:text-gray-800'}`}
+            className={`px-6 py-3 font-medium border-b-2 -mb-px transition-all duration-200 flex items-center gap-2 ${activeTab === 'addProduct' 
+              ? 'text-green-600 border-green-600 bg-green-50' 
+              : 'text-gray-600 border-transparent hover:text-green-500 hover:border-green-300 hover:bg-green-50/50'}`}
             onClick={() => setActiveTab('addProduct')}
           >
-            Add Product
+            <span className="text-lg">➕</span>
+            <span>Add Product</span>
           </button>
         </div>
 
@@ -312,7 +327,7 @@ const AdminDashboard = () => {
                     filteredOrders.map((order) => (
                       <tr key={order.id} className="hover:bg-gray-50 text-gray-800 border-b border-gray-200">
                         <td>
-                          <div className="font-bold text-gray-800">{order.id}</div>
+                          <div className="font-bold text-gray-800">#{order.id}</div>
                           <div className="text-sm text-gray-500">{order.items?.length || 0} items</div>
                         </td>
                         <td>
@@ -374,9 +389,12 @@ const AdminDashboard = () => {
                   <option value="out_of_stock">Out of Stock</option>
                 </select>
                 <button 
-                  className="btn bg-gray-100 text-gray-800 hover:bg-gray-200 border-gray-300"
+                  className="btn bg-blue-600 text-white hover:bg-blue-700 border-blue-600"
                   onClick={() => setActiveTab('addProduct')}
                 >
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                    <path fillRule="evenodd" d="M10 3a1 1 0 00-1 1v5H4a1 1 0 100 2h5v5a1 1 0 102 0v-5h5a1 1 0 100-2h-5V4a1 1 0 00-1-1z" clipRule="evenodd" />
+                  </svg>
                   Add New Product
                 </button>
               </div>
@@ -485,7 +503,7 @@ const AdminDashboard = () => {
                     name="name"
                     value={newProduct.name}
                     onChange={handleInputChange}
-                    className="input input-bordered w-full bg-white text-gray-800 border-gray-300 placeholder-gray-400"
+                    className="input input-bordered w-full bg-white text-gray-800 border-gray-300 placeholder-gray-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
                     placeholder="Enter product name"
                     required
                   />
@@ -500,7 +518,7 @@ const AdminDashboard = () => {
                     name="price"
                     value={newProduct.price}
                     onChange={handleInputChange}
-                    className="input input-bordered w-full bg-white text-gray-800 border-gray-300 placeholder-gray-400"
+                    className="input input-bordered w-full bg-white text-gray-800 border-gray-300 placeholder-gray-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
                     placeholder="0.00"
                     step="0.01"
                     min="0"
@@ -516,7 +534,7 @@ const AdminDashboard = () => {
                     name="category"
                     value={newProduct.category}
                     onChange={handleInputChange}
-                    className="select select-bordered w-full bg-white text-gray-800 border-gray-300"
+                    className="select select-bordered w-full bg-white text-gray-800 border-gray-300 focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
                     required
                   >
                     <option value="Electronics">Electronics</option>
@@ -537,7 +555,7 @@ const AdminDashboard = () => {
                     name="stock"
                     value={newProduct.stock}
                     onChange={handleInputChange}
-                    className="input input-bordered w-full bg-white text-gray-800 border-gray-300 placeholder-gray-400"
+                    className="input input-bordered w-full bg-white text-gray-800 border-gray-300 placeholder-gray-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
                     placeholder="Enter quantity"
                     min="0"
                     required
@@ -553,7 +571,7 @@ const AdminDashboard = () => {
                     name="image"
                     value={newProduct.image}
                     onChange={handleInputChange}
-                    className="input input-bordered w-full bg-white text-gray-800 border-gray-300 placeholder-gray-400"
+                    className="input input-bordered w-full bg-white text-gray-800 border-gray-300 placeholder-gray-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
                     placeholder="https://example.com/image.jpg"
                   />
                 </div>
@@ -566,7 +584,7 @@ const AdminDashboard = () => {
                     name="description"
                     value={newProduct.description}
                     onChange={handleInputChange}
-                    className="textarea textarea-bordered w-full h-32 bg-white text-gray-800 border-gray-300 placeholder-gray-400"
+                    className="textarea textarea-bordered w-full h-32 bg-white text-gray-800 border-gray-300 placeholder-gray-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
                     placeholder="Enter product description..."
                   />
                 </div>
@@ -582,7 +600,7 @@ const AdminDashboard = () => {
                 </button>
                 <button
                   type="submit"
-                  className="btn bg-gray-800 text-white hover:bg-gray-700 border-gray-800"
+                  className="btn bg-green-600 text-white hover:bg-green-700 border-green-600"
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
                     <path fillRule="evenodd" d="M10 3a1 1 0 00-1 1v5H4a1 1 0 100 2h5v5a1 1 0 102 0v-5h5a1 1 0 100-2h-5V4a1 1 0 00-1-1z" clipRule="evenodd" />
