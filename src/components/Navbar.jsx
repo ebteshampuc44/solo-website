@@ -28,10 +28,7 @@ const Navbar = () => {
         {/* Authentication Status */}
         {isAuthenticated ? (
           <>
-            {/* Welcome Message */}
-            <div className="hidden md:flex items-center text-sm text-gray-700">
-              Welcome, <span className="font-medium ml-1">{user?.firstName || 'User'}</span>
-            </div>
+          
             
             {/* Account Dropdown */}
             <div className="dropdown dropdown-end">

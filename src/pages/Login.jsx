@@ -274,19 +274,7 @@ const Login = () => {
             </p>
           </div>
         </div>
-        
-        {/* Demo Credentials */}
-        <div className="mt-8 bg-blue-50 border border-blue-200 rounded-xl p-4">
-          <h3 className="font-medium text-gray-900 mb-2">Demo Credentials:</h3>
-          <div className="space-y-2 text-sm">
-            <div>
-              <span className="font-medium">Admin:</span> admin@minimart.com / admin123
-            </div>
-            <div>
-              <span className="font-medium">Customer:</span> customer@minimart.com / customer123
-            </div>
-          </div>
-        </div>
+
         
         {/* Back to Home */}
         <div className="text-center mt-8">
